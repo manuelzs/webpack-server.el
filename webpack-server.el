@@ -119,7 +119,7 @@ If you are currently in the *webpack-dev-server* buffer, restart the server"
 (defun webpack-server-start ()
   "Start the Webpack development server."
   (interactive)
-  (let ((defualt-directory (webpack-server-project-root)))
+  (let ((default-directory (webpack-server-project-root)))
     (webpack-server-comint-pop "webpack-dev-server"
                                (webpack-server-cmd default-directory)
                                (webpack-server-args))))
