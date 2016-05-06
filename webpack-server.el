@@ -80,15 +80,8 @@
                 (setq max (- max 1))))))
         (if found (expand-file-name curdir))))))
 
-(defun webpack-server-comint-pop(name command args)
-  "This creates a comint interaction buffer, called `name',
-running `command', called with `args'"
-  (ansi-color-for-comint-mode-on)
-  (apply 'make-comint name command nil args)
-  (get-buffer (concat "*" name "*")))
-
-(defun webpack-server-cmd (project-root-dir)
-  (concat project-root-dir "node_modules/.bin/" "webpack-dev-server"))
+(defun webpack-server-cmd (root-dir)
+  (concat root-dir "node_modules/.bin/" "webpack-dev-server"))
 
 (defun webpack-server-args ()
   (list "-d"
@@ -120,9 +113,11 @@ If you are currently in the *webpack-dev-server* buffer, restart the server"
   "Start the Webpack development server."
   (interactive)
   (let ((default-directory (webpack-server-project-root)))
-    (webpack-server-comint-pop "webpack-dev-server"
-                               (webpack-server-cmd default-directory)
-                               (webpack-server-args))))
+    (apply 'make-comint "webpack-dev-server"
+           (webpack-server-cmd default-directory)
+           nil
+           (webpack-server-args)))
+  (get-buffer "*webpack-dev-server*"))
 
 ;;;###autoload
 (defun webpack-server-stop()
