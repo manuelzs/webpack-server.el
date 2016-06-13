@@ -106,7 +106,7 @@ If you are currently in the *webpack-dev-server* buffer, restart the server"
           (message "Webpack Dev Server already running")
           (if (and buff (equalp buff (current-buffer)))
               (webpack-server-restart)
-            (get-buffer buffname)))
+            (switch-to-buffer-other-window (get-buffer buffname))))
       (webpack-server-start))))
 
 (defun webpack-server-start ()
