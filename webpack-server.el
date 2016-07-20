@@ -39,12 +39,12 @@
   :prefix "webpack-server-")
 
 (defcustom webpack-server-host "localhost"
-  "Host to run webpack dev server"
+  "Host to run webpack dev server."
   :group 'webpack-server
   :type 'string)
 
 (defcustom webpack-server-port "8080"
-  "Port to run webpack dev server"
+  "Port to run webpack dev server."
   :group 'webpack-server
   :type 'string)
 
@@ -52,7 +52,9 @@
 ;; Environment
 
 (defun webpack-server-localise (var func)
-  "Return buffer local varible or get & set it"
+  "Return buffer local varible or get & set it.
+Argument VAR Variable to localise.
+Argument FUNC callback."
   (if (local-variable-p var)
       (symbol-value var)
     (let ((the-var (funcall func)))
@@ -63,7 +65,7 @@
 
 
 (defun webpack-server-project-root ()
-  "Return the root of the project(dir with webpack.config.js in) or nil"
+  "Return the root of the project(dir with webpack.config.js in) or nil."
   (webpack-server-localise
    'webpack-server-this-project-root
    '(lambda ()
@@ -81,9 +83,12 @@
         (if found (expand-file-name curdir))))))
 
 (defun webpack-server-cmd (root-dir)
+  "Command to run the webpack-dev-server.
+Argument ROOT-DIR Root directory of the project where node-modules can be found."
   (concat root-dir "node_modules/.bin/" "webpack-dev-server"))
 
 (defun webpack-server-args ()
+  "Build args for the webpack-dev-server."
   (list "-d"
         "--progress"
         (concat "--host " webpack-server-host)
@@ -144,3 +149,7 @@ If you are currently in the *webpack-dev-server* buffer, restart the server"
 
 
 (provide 'webpack-server)
+
+(provide 'webpack-server)
+
+;;; webpack-server.el ends here
