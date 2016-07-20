@@ -1,4 +1,4 @@
-;;; webpack-server.el --- Mode for running the webpack-dev-server in emacs. -*- lexical-binding: t -*-
+;;; webpack-server.el --- Mode for running the webpack-dev-server in Emacs. -*- lexical-binding: t -*-
 
 ;; Copyright © 2016 Manuel Zapata <manuelzs@gmail.com>
 
@@ -28,7 +28,7 @@
 ;;; Commentary:
 ;;
 ;; This library provides an easy way to run the webpack-dev-server
-;; inside emacs.  See the README for more details.
+;; inside Emacs.  See the README for more details.
 ;;
 ;;; Code:
 
@@ -104,7 +104,7 @@ If you are currently in the *webpack-dev-server* buffer, restart the server"
     (if proc
         (progn
           (message "Webpack Dev Server already running")
-          (if (and buff (equalp buff (current-buffer)))
+          (if (and buff (eq buff (current-buffer)))
               (webpack-server-restart)
             (switch-to-buffer-other-window (get-buffer buffname))))
       (webpack-server-start))))
