@@ -112,7 +112,7 @@ If you are currently in the *webpack-dev-server* buffer, restart the server"
           (if (and buff (eq buff (current-buffer)))
               (webpack-server-restart)
             (switch-to-buffer-other-window (get-buffer buffname))))
-      (webpack-server-start))))
+      (switch-to-buffer-other-window (webpack-server-start)))))
 
 (defun webpack-server-start ()
   "Start the Webpack development server."
