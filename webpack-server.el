@@ -48,6 +48,11 @@
   :group 'webpack-server
   :type 'string)
 
+(defcustom webpack-server-before-start-hook '()
+  "Hook called before starting the webpack dev server"
+  :group 'webpack-server
+  :type 'hook)
+
 
 ;; Environment
 
@@ -118,6 +123,7 @@ If you are currently in the *webpack-dev-server* buffer, restart the server"
   "Start the Webpack development server."
   (interactive)
   (let ((default-directory (webpack-server-project-root)))
+    (run-hooks 'webpack-server-before-start-hook)
     (apply 'make-comint "webpack-dev-server"
            (webpack-server-cmd default-directory)
            nil
