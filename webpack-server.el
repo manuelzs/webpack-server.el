@@ -156,6 +156,4 @@ If you are currently in the *webpack-dev-server* buffer, restart the server"
 
 (provide 'webpack-server)
 
-(provide 'webpack-server)
-
 ;;; webpack-server.el ends here
