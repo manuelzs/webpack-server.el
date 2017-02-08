@@ -1,11 +1,11 @@
 ;;; webpack-server.el --- Mode for running the webpack-dev-server in Emacs. -*- lexical-binding: t -*-
 
-;; Copyright © 2016 Manuel Zapata <manuelzs@gmail.com>
+;; Copyright © 2016-2017 Manuel Zapata <manuelzs@gmail.com>
 
 ;; Author: Manuel Zapata <manuelzs@gmail.com>
 ;; URL: https://github.com/manuelzs/webpack-server.el
 ;; Keywords: convenience, webpack, js
-;; Version: 0.1.0
+;; Version: 0.1.1
 ;; Created: 2016-04-26
 
 ;; This file is NOT part of GNU Emacs.
